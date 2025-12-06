@@ -32,7 +32,7 @@ impl AppState {
         let config = Config::load()?;
 
         // Initialize theme
-        let theme = Theme::load(&config.project.theme)?;
+        let theme = Theme::load(&config.theme)?;
 
         // Create module registry
         let modules = ModuleRegistry::new();

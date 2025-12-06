@@ -91,7 +91,7 @@ impl ApplicationModule for TextEditor {
         }))
     }
 
-    fn load_state(&mut self, state: serde_json::Value) {
+    fn load_state(&mut self, state: serde_json::Value) -> crate::Result<()> {
         if let Ok(obj) = serde_json::from_value::<serde_json::Map<String, serde_json::Value>>(state) {
             if let Some(content) = obj.get("content").and_then(|v| v.as_str()) {
                 self.content = content.to_string();
@@ -103,5 +103,6 @@ impl ApplicationModule for TextEditor {
                 self.cursor_pos = cursor_pos as usize;
             }
         }
+        Ok(())
     }
 }

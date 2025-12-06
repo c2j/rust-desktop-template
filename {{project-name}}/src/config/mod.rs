@@ -33,7 +33,7 @@ impl Config {
         info!("Loading application configuration");
 
         // Load theme configuration
-        let theme_config = ThemeConfig::load()?;
+        let theme_config = ThemeConfig::default();
 
         Ok(Self {
             name: "{{project-name}}".to_string(),
