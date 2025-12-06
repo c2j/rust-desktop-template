@@ -184,11 +184,8 @@ impl eframe::App for App {
 fn configure_egui(ctx: &Context) {
     let mut fonts = egui::FontDefinitions::default();
 
-    // Add emoji font support for navigation icons
-    fonts.font_data.insert(
-        "emoji".to_string(),
-        egui::FontData::from_static(include_bytes!("../assets/NotoEmoji-Regular.ttf")),
-    );
+    // TODO: Add emoji font support when available
+    // fonts.font_data.insert("emoji".to_string(), egui::FontData::default());
 
     // Configure font families
     fonts.families.get_mut(&egui::FontFamily::Proportional)
