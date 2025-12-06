@@ -1,6 +1,6 @@
 //! Status bar component for displaying system information and application status
 
-use crate::error::Result;
+use crate::app::AppState;
 use egui::{Context, Response, RichText, Ui};
 use std::sync::{Arc, RwLock};
 use tracing::{debug, warn};
@@ -21,7 +21,7 @@ impl StatusBar {
     }
 
     /// Render the status bar UI
-    pub fn render(&mut self, ui: &mut Ui, ctx: &Context, state: &Arc<RwLock<crate::AppState>>) {
+    pub fn render(&mut self, ui: &mut Ui, ctx: &Context, state: &Arc<RwLock<AppState>>) {
         // Update last update time
         self.last_update = chrono::Local::now();
 
@@ -42,7 +42,7 @@ impl StatusBar {
     }
 
     /// Render left side status information
-    fn render_left_status(&self, ui: &mut Ui, _state: &Arc<RwLock<()>>) {
+    fn render_left_status(&self, ui: &mut Ui, state: &Arc<RwLock<AppState>>) {
         let state = match state.read() {
             Ok(state) => state,
             Err(e) => {
@@ -53,7 +53,7 @@ impl StatusBar {
         };
 
         // Application name and version
-        ui.label(RichText::new("{{project-name}}").size(12.0));
+        ui.label(RichText::new("rust-desktop-app").size(12.0));
         ui.label(RichText::new(format!("v{}", env!("CARGO_PKG_VERSION"))).size(10.0).weak());
 
         ui.separator();
@@ -69,7 +69,7 @@ impl StatusBar {
     }
 
     /// Render right side system information
-    fn render_right_status(&self, ui: &mut Ui, _state: &Arc<RwLock<()>>) {
+    fn render_right_status(&self, ui: &mut Ui, _state: &Arc<RwLock<AppState>>) {
         // Memory usage
         self.render_memory_usage(ui);
 

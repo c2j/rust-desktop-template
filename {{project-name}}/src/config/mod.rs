@@ -21,7 +21,7 @@ pub struct Config {
 impl Default for Config {
     fn default() -> Self {
         Self {
-            name: "{{project-name}}".to_string(),
+            name: "rust-desktop-app".to_string(),
             theme: ThemeConfig::default(),
         }
     }
@@ -36,7 +36,7 @@ impl Config {
         let theme_config = ThemeConfig::default();
 
         Ok(Self {
-            name: "{{project-name}}".to_string(),
+            name: "rust-desktop-app".to_string(),
             theme: theme_config,
         })
     }
@@ -44,7 +44,8 @@ impl Config {
     /// Save configuration to files
     pub fn save(&self) -> Result<()> {
         info!("Saving application configuration");
-        // TODO: Implement saving logic
+        // TODO: Implement theme saving
+        // self.theme.save()?;
         Ok(())
     }
 

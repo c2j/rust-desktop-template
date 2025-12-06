@@ -1,7 +1,7 @@
 //! Workspace component for displaying the active module content
 
 use crate::{
-    error::Result,
+    app::AppState,
     modules::{ApplicationModule, ModuleId},
     ui::Theme,
 };
@@ -13,14 +13,14 @@ use tracing::{debug, warn};
 #[derive(Debug)]
 pub struct Workspace {
     /// Shared application state
-    state: Arc<RwLock<crate::AppState>>,
+    state: Arc<RwLock<AppState>>,
     /// Previous active module for change detection
     previous_module: Option<ModuleId>,
 }
 
 impl Workspace {
     /// Create a new workspace component
-    pub fn new(state: Arc<RwLock<crate::AppState>>) -> Self {
+    pub fn new(state: Arc<RwLock<AppState>>) -> Self {
         Self {
             state,
             previous_module: None,
@@ -249,7 +249,7 @@ impl Workspace {
             ui.add_space(theme.spacing.medium);
 
             // Welcome message
-            let welcome_msg = "Welcome to {{project-name}}!";
+            let welcome_msg = "Welcome to rust-desktop-app!";
             let msg_text = egui::RichText::new(welcome_msg).size(24.0).color(theme.colors.text);
             ui.label(msg_text);
 

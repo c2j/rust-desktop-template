@@ -3,7 +3,7 @@
 use crate::error::{AppError, Result};
 use serde::{Deserialize, Serialize};
 use std::path::Path;
-use tracing::{debug, info};
+use tracing::{debug, info, warn};
 
 /// Theme configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]

@@ -1,0 +1,10 @@
+/home/c2j/workspace/CODE/rust-desktop-template-project/rust-desktop-template/{{project-name}}/target/debug/deps/zbus_macros-cb1ab5ca9d3205e0.d: /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/lib.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/error.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/iface.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/proxy.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/utils.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/../README.md
+
+/home/c2j/workspace/CODE/rust-desktop-template-project/rust-desktop-template/{{project-name}}/target/debug/deps/libzbus_macros-cb1ab5ca9d3205e0.so: /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/lib.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/error.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/iface.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/proxy.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/utils.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/../README.md
+
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/lib.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/error.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/iface.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/proxy.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/utils.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zbus_macros-3.15.2/src/../README.md:

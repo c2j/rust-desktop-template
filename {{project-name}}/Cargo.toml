@@ -1,11 +1,11 @@
 [package]
-name = "{{project-name}}"
+name = "test-template"
 version = "0.1.0"
 authors = ["{{author-name}} <{{author-email}}>"]
 edition = "2021"
 description = "{{project-description}}"
 license = "MIT"
-repository = "https://github.com/{{github-username}}/{{project-name}}"
+repository = "https://github.com/{{github-username}}/test-template"
 
 [dependencies]
 # Core UI framework

@@ -1,7 +1,7 @@
 //! Theme system for the desktop application
 
 use crate::error::Result;
-use egui::{Color32, Rounding, Style, Visuals};
+use egui::{Color32, Context, Rounding, Style, Visuals};
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 use tracing::{debug, info};

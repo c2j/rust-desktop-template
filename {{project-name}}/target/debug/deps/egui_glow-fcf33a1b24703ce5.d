@@ -1,0 +1,11 @@
+/home/c2j/workspace/CODE/rust-desktop-template-project/rust-desktop-template/{{project-name}}/target/debug/deps/egui_glow-fcf33a1b24703ce5.d: /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/lib.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/painter.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/misc_util.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader_version.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/vao.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader/vertex.glsl /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader/fragment.glsl
+
+/home/c2j/workspace/CODE/rust-desktop-template-project/rust-desktop-template/{{project-name}}/target/debug/deps/libegui_glow-fcf33a1b24703ce5.rmeta: /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/lib.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/painter.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/misc_util.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader_version.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/vao.rs /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader/vertex.glsl /home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader/fragment.glsl
+
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/lib.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/painter.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/misc_util.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader_version.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/vao.rs:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader/vertex.glsl:
+/home/c2j/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/egui_glow-0.28.1/src/shader/fragment.glsl:

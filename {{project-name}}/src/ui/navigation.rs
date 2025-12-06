@@ -1,8 +1,9 @@
 //! Navigation component for the application
 
 use crate::{
+    app::AppState,
     error::Result,
-    modules::{ModuleId, ModuleRegistry},
+    modules::{ModuleId},
     ui::Theme,
 };
 use egui::{Context, Response, ScrollArea, Ui, Vec2};
@@ -13,14 +14,14 @@ use tracing::debug;
 #[derive(Debug)]
 pub struct Navigation {
     /// Shared application state
-    state: Arc<RwLock<()>>,
+    state: Arc<RwLock<AppState>>,
     /// Currently selected module
     selected_module: Option<ModuleId>,
 }
 
 impl Navigation {
     /// Create a new navigation component
-    pub fn new(state: Arc<RwLock<()>>) -> Self {
+    pub fn new(state: Arc<RwLock<AppState>>) -> Self {
         Self {
             state,
             selected_module: None,
@@ -44,44 +45,54 @@ impl Navigation {
 
     /// Render the navigation UI
     pub fn render(&mut self, ui: &mut Ui, ctx: &Context) {
-        let state = match self.state.read() {
-            Ok(state) => state,
-            Err(e) => {
-                debug!("Failed to read application state: {}", e);
-                return;
-            }
+        // Clone all data needed before borrowing self mutably
+        let (theme, module_items) = {
+            let state = match self.state.read() {
+                Ok(state) => state,
+                Err(e) => {
+                    debug!("Failed to read application state: {}", e);
+                    return;
+                }
+            };
+
+            let theme = state.theme.clone();
+            let module_ids = state.modules.module_ids();
+            let selected_module = self.selected_module;
+
+            let module_items: Vec<_> = module_ids.iter()
+                .filter_map(|&module_id| {
+                    let module = state.modules.get(module_id)?;
+                    let module_data = (
+                        module_id,
+                        module.name().to_string(),
+                        module.icon().to_string(),
+                        module.description().to_string(),
+                        selected_module == Some(module_id)
+                    );
+                    Some(module_data)
+                })
+                .collect();
+
+            (theme, module_items)
         };
 
         // Calculate module item height
         let item_height = 40.0;
 
-        // Get module IDs sorted by position
-        let module_ids = state.modules.module_ids();
+        // Render navigation header
+        ui.add_space(8.0);
+        self.render_navigation_header(ui, &theme);
+        ui.add_space(8.0);
 
-        // Create scrollable navigation area
-        ScrollArea::vertical()
-            .show(ui, |ui| {
-                ui.vertical(|ui| {
-                    // Render navigation header
-                    ui.add_space(8.0);
-                    self.render_navigation_header(ui, &state.theme);
-                    ui.add_space(8.0);
+        // Render navigation items
+        for (module_id, name, icon, _description, is_selected) in module_items {
+            self.render_navigation_item(ui, module_id, &name, &icon, is_selected, item_height, &theme);
+        }
 
-                    // Render navigation items
-                    for module_id in module_ids {
-                        let is_selected = self.selected_module == Some(module_id);
+        ui.add_space(16.0);
 
-                        if let Some(module) = state.modules.get(module_id) {
-                            self.render_navigation_item(ui, module_id, module, is_selected, item_height);
-                        }
-                    }
-
-                    ui.add_space(16.0);
-
-                    // Render navigation footer with status
-                    self.render_navigation_footer(ui, &state.theme);
-                });
-            });
+        // Render navigation footer with status
+        self.render_navigation_footer(ui, &theme);
     }
 
     /// Render navigation header
@@ -102,24 +113,18 @@ impl Navigation {
 
     /// Render a single navigation item
     fn render_navigation_item(
-        &self,
+        &mut self,
         ui: &mut Ui,
         module_id: ModuleId,
-        module: &dyn crate::modules::ApplicationModule,
+        name: &str,
+        icon: &str,
         is_selected: bool,
         item_height: f32,
+        theme: &Theme,
     ) {
-        let state = self.state.read().unwrap_or_else(|_| {
-            crate::AppState::new().unwrap_or_else(|_| {
-                // Fallback state
-                crate::AppState::new().unwrap()
-            })
-        });
-
-        let theme = &state.theme;
 
         // Create button for navigation item
-        let button = egui::Button::new(egui::RichText::new(format!("{} {}", module.icon(), module.name()))
+        let button = egui::Button::new(egui::RichText::new(format!("{} {}", icon, name))
             .size(11.0)
             .color(if is_selected {
                 theme.colors.text
@@ -141,9 +146,10 @@ impl Navigation {
 
         let response = ui.add(button);
 
-        // TODO: Show tooltip on hover
+        // TODO: Show tooltip on hover - tooltip_text not available in egui 0.28
         if response.hovered() {
             // tooltip_text not available in egui 0.28
+            // Would use description parameter here
         }
 
         // Handle selection
@@ -199,23 +205,44 @@ impl Navigation {
 
         if response.clicked() {
             debug!("Settings button clicked");
-            // TODO: Implement set_selected_module
+            self.set_selected_module(Some(ModuleId::Settings));
         }
     }
 
-    /// Initialize example modules (for testing and demonstration)
-    pub fn initialize_example_modules(&self) -> Result<()> {
-        if let Ok(mut state) = self.state.write() {
-            use crate::modules::create_example_modules;
+    /// Render empty workspace as fallback
+    fn render_empty_workspace(&self, ui: &mut Ui, theme: &Theme) {
+        ui.vertical_centered(|ui| {
+            ui.add_space(theme.spacing.xlarge);
+            ui.label(egui::RichText::new("⚠️ State Error").size(24.0).color(theme.colors.error));
+            ui.label(egui::RichText::new("Failed to read application state").size(14.0).color(theme.colors.text_secondary));
+            ui.add_space(theme.spacing.large);
+        });
+    }
 
-            for module in create_example_modules() {
+    /// Initialize example modules (for testing and demonstration)
+    pub fn initialize_example_modules(&mut self) -> Result<()> {
+        let modules_to_register = {
+            use crate::modules::create_example_modules;
+            create_example_modules()
+        };
+
+        if let Ok(mut state) = self.state.write() {
+            for module in modules_to_register {
                 state.modules.register(module);
             }
+        }
 
-            // Select the first module as default
-            if let Some(first_module) = state.modules.module_ids().first() {
-                self.set_selected_module(Some(*first_module));
+        // Select the first module after releasing the write lock
+        let first_module = {
+            if let Ok(state) = self.state.read() {
+                state.modules.module_ids().first().copied()
+            } else {
+                None
             }
+        };
+
+        if let Some(module_id) = first_module {
+            self.set_selected_module(Some(module_id));
         }
 
         Ok(())

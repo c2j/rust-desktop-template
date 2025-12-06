@@ -127,7 +127,7 @@ impl eframe::App for App {
             // Top panel for global actions
             egui::TopBottomPanel::top("top_panel").show_inside(ui, |ui| {
                 ui.horizontal(|ui| {
-                    ui.heading("{{project-name}}");
+                    ui.heading("rust-desktop-app");
                     ui.separator();
 
                     if ui.button("🎨").clicked() {
@@ -163,7 +163,7 @@ impl eframe::App for App {
                 .max_height(32.0)
                 .show_inside(ui, |ui| {
                     ui.horizontal(|ui| {
-                        ui.label(format!("{{project-name}} v{}", env!("CARGO_PKG_VERSION")));
+                        ui.label(format!("rust-desktop-app v{}", env!("CARGO_PKG_VERSION")));
 
                         if let Ok(state) = self.state.read() {
                             if let Some(module_id) = state.active_module {
@@ -186,6 +186,7 @@ fn configure_egui(ctx: &Context) {
 
     // TODO: Add emoji font support when available
     // fonts.font_data.insert("emoji".to_string(), egui::FontData::default());
+    // Note: Emoji font file commented out to avoid missing file error
 
     // Configure font families
     fonts.families.get_mut(&egui::FontFamily::Proportional)
