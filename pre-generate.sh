@@ -38,4 +38,4 @@ echo "   Crate: $CRATE_NAME"
 echo "   Author: $author_name"
 echo "   Email: $author_email"
 echo "   Theme: $theme"
-echo "   Include Examples: $include_examples"'},
+echo "   Include Examples: $include_examples"
