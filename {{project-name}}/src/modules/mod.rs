@@ -85,8 +85,8 @@ pub use registry::ModuleRegistry;
 /// Example module implementations
 pub fn create_example_modules() -> Vec<Box<dyn ApplicationModule>> {
     vec![
-        Box::new(file_browser::FileBrowserModule::new()),
-        Box::new(text_editor::TextEditorModule::new()),
-        Box::new(system_monitor::SystemMonitorModule::new()),
+        Box::new(file_browser::FileBrowser::new()),
+        Box::new(text_editor::TextEditor::new()),
+        Box::new(system_monitor::SystemMonitor::new()),
     ]
 }

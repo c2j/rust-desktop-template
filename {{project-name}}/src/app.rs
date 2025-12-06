@@ -1,7 +1,7 @@
 //! Main application logic and state management
 
 use crate::{
-    config::{Config, ProjectConfig},
+    config::Config,
     error::Result,
     modules::{ApplicationModule, ModuleId, ModuleRegistry},
     ui::{Navigation, Theme, Workspace},
