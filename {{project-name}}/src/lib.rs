@@ -15,7 +15,6 @@ pub mod config;
 pub mod error;
 pub mod logger;
 pub mod modules;
-pub mod platform;
 pub mod ui;
 
 pub use app::App;

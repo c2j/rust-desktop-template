@@ -69,7 +69,7 @@ pub trait ApplicationModule: Send + Sync {
     }
 
     /// Load module state (if persistent)
-    fn load_state(&mut self, _state: <serde_json::Value>) -> crate::Result<()> {
+    fn load_state(&mut self, _state: serde_json::Value) -> crate::Result<()> {
         Ok(())
     }
 }

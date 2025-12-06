@@ -5,10 +5,8 @@ use serde::{Deserialize, Serialize};
 use std::path::Path;
 use tracing::{debug, info};
 
-pub mod project;
 pub mod theme;
 
-pub use project::ProjectConfig;
 pub use theme::ThemeConfig;
 
 /// Main application configuration

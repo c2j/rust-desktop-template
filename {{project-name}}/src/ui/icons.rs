@@ -119,7 +119,7 @@ pub mod icons {
         pub const DARK: &str = "🌙";
         pub const AUTO: &str = "🌓";
         pub const PALETTE: &str = "🎨";
-        pub const CONTRAST: &str": "🔳";
+        pub const CONTRAST: &str = "🔳";
     }
 
     /// Status icons

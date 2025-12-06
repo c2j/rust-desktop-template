@@ -4,7 +4,6 @@ pub mod navigation;
 pub mod theme;
 pub mod workspace;
 pub mod status_bar;
-pub mod layout;
 pub mod icons;
 
 pub use navigation::Navigation;
