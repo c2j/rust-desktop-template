@@ -5,9 +5,17 @@ use std::collections::HashMap;
 use tracing::{debug, info};
 
 /// Registry for managing application modules
-#[derive(Debug, Default)]
+#[derive(Default)]
 pub struct ModuleRegistry {
     modules: HashMap<ModuleId, Box<dyn ApplicationModule>>,
+}
+
+impl std::fmt::Debug for ModuleRegistry {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("ModuleRegistry")
+            .field("module_count", &self.modules.len())
+            .finish()
+    }
 }
 
 impl ModuleRegistry {
@@ -29,7 +37,7 @@ impl ModuleRegistry {
     }
 
     /// Get a mutable module by ID
-    pub fn get_mut(&mut self, id: ModuleId) -> Option<&mut dyn ApplicationModule> {
+    pub fn get_mut(&mut self, id: ModuleId) -> Option<&mut (dyn ApplicationModule + '_)> {
         self.modules.get_mut(&id).map(|m| m.as_mut())
     }
 

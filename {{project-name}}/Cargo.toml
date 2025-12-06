@@ -41,6 +41,10 @@ config = "0.13"
 # Icons (emoji support for navigation)
 unicode-segmentation = "1.10"
 
+# Additional utilities
+dirs = "5.0"
+fastrand = "2.0"
+
 # Platform-specific dependencies
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3", features = ["winuser", "shellapi"] }

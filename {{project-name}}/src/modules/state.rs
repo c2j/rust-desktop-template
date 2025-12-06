@@ -6,9 +6,16 @@ use std::path::PathBuf;
 use tracing::{debug, info, warn};
 
 /// Module state manager for handling persistent state
-#[derive(Debug)]
 pub struct ModuleStateManager {
     storage: Box<dyn StateStorage>,
+}
+
+impl std::fmt::Debug for ModuleStateManager {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("ModuleStateManager")
+            .field("storage_type", &"StateStorage")
+            .finish()
+    }
 }
 
 /// Trait for state storage backends

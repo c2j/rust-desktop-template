@@ -86,7 +86,7 @@ impl App {
         };
 
         // Configure egui context
-        configure_egui(cc.egui_ctx);
+        configure_egui(&cc.egui_ctx);
 
         // Create UI components
         let navigation = Navigation::new(state.clone());
@@ -187,8 +187,7 @@ fn configure_egui(ctx: &Context) {
     // Add emoji font support for navigation icons
     fonts.font_data.insert(
         "emoji".to_string(),
-        egui::FontData::from_static(include_bytes!("../assets/NotoEmoji-Regular.ttf"))
-            .unwrap_or_default(),
+        egui::FontData::from_static(include_bytes!("../assets/NotoEmoji-Regular.ttf")),
     );
 
     // Configure font families
