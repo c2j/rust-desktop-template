@@ -1,0 +1,72 @@
+[package]
+name = "{{project-name}}"
+version = "0.1.0"
+authors = ["{{author-name}} <{{author-email}}>"]
+edition = "2021"
+description = "{{project-description}}"
+license = "MIT"
+repository = "https://github.com/{{github-username}}/{{project-name}}"
+
+[dependencies]
+# Core UI framework
+egui = "0.28.1"
+eframe = { version = "0.28.1", features = ["persistence"] }
+
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# File system operations
+walkdir = "2.4"
+notify = "6.1"
+
+# Configuration
+config = "0.13"
+
+# Icons (emoji support for navigation)
+unicode-segmentation = "1.10"
+
+# Platform-specific dependencies
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["winuser", "shellapi"] }
+
+[target.'cfg(macos)'.dependencies]
+cocoa = "0.25"
+objc = "0.2"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[dev-dependencies]
+criterion = "0.5"
+tempfile = "3.8"
+pretty_assertions = "1.4"
+
+[[bench]]
+name = "ui_bench"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true

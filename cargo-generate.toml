@@ -1,0 +1,41 @@
+[template]
+name = "Rust Desktop Application Template"
+description = "A VS Code-like desktop application template for Rust with egui/eframe"
+repository = "https://github.com/your-org/rust-desktop-template"
+branch = "main"
+
+[placeholders.project_name]
+prompt = "Project name?"
+type = "string"
+default = "my-desktop-app"
+regex = "^[a-zA-Z][a-zA-Z0-9_-]*$"
+
+[placeholders.project_description]
+prompt = "Project description?"
+type = "string"
+default = "A modern desktop application built with Rust"
+
+[placeholders.author_name]
+prompt = "Author name?"
+type = "string"
+default = "Your Name"
+
+[placeholders.author_email]
+prompt = "Author email?"
+type = "string"
+default = "your.email@example.com"
+
+[placeholders.theme]
+prompt = "Default theme?"
+type = "string"
+choices = ["light", "dark"]
+default = "dark"
+
+[placeholders.include_examples]
+prompt = "Include example modules?"
+type = "bool"
+default = true
+
+[hooks]
+pre = ["pre-generate.sh"]
+post = ["post-generate.sh"]
