@@ -13,14 +13,14 @@ use tracing::debug;
 #[derive(Debug)]
 pub struct Navigation {
     /// Shared application state
-    state: Arc<RwLock<crate::AppState>>,
+    state: Arc<RwLock<()>>,
     /// Currently selected module
     selected_module: Option<ModuleId>,
 }
 
 impl Navigation {
     /// Create a new navigation component
-    pub fn new(state: Arc<RwLock<crate::AppState>>) -> Self {
+    pub fn new(state: Arc<RwLock<()>>) -> Self {
         Self {
             state,
             selected_module: None,

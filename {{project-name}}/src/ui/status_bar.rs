@@ -42,7 +42,7 @@ impl StatusBar {
     }
 
     /// Render left side status information
-    fn render_left_status(&self, ui: &mut Ui, state: &Arc<RwLock<crate::AppState>>) {
+    fn render_left_status(&self, ui: &mut Ui, _state: &Arc<RwLock<()>>) {
         let state = match state.read() {
             Ok(state) => state,
             Err(e) => {
@@ -69,7 +69,7 @@ impl StatusBar {
     }
 
     /// Render right side system information
-    fn render_right_status(&self, ui: &mut Ui, _state: &Arc<RwLock<crate::AppState>>) {
+    fn render_right_status(&self, ui: &mut Ui, _state: &Arc<RwLock<()>>) {
         // Memory usage
         self.render_memory_usage(ui);
 
@@ -86,36 +86,9 @@ impl StatusBar {
 
     /// Render memory usage information
     fn render_memory_usage(&self, ui: &mut Ui) {
-        #[cfg(not(target_os = "unknown"))]
+        // Simplified memory usage display without sysinfo dependency
         {
-            match sysinfo::System::new_with_specifics(sysinfo::RefreshKind::new().with_memory()) {
-                Ok(mut system) => {
-                    system.refresh_memory();
-
-                    let total_memory = system.total_memory();
-                    let used_memory = system.used_memory();
-
-                    // Format memory usage
-                    let used_mb = used_memory / (1024 * 1024);
-                    let total_mb = total_memory / (1024 * 1024);
-                    let usage_percent = (used_memory as f64 / total_memory as f64 * 100.0) as u8;
-
-                    // Choose color based on usage
-                    let usage_color = if usage_percent > 80 {
-                        egui::Color32::RED
-                    } else if usage_percent > 60 {
-                        egui::Color32::YELLOW
-                    } else {
-                        egui::Color32::GREEN
-                    };
-
-                    let memory_text = format!("🧠 {}MB / {}MB", used_mb, total_mb);
-                    ui.label(RichText::new(memory_text).size(10.0).color(usage_color));
-                }
-                Err(_) => {
-                    ui.label(RichText::new("🧠 Memory: N/A").size(10.0).weak());
-                }
-            }
+            ui.label(RichText::new("🧠 Memory: Monitoring disabled").size(10.0).weak());
         }
 
         #[cfg(target_os = "unknown")]
