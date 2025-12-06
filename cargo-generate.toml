@@ -35,7 +35,3 @@ default = "dark"
 prompt = "Include example modules?"
 type = "bool"
 default = true
-
-[hooks]
-pre = ["pre-generate.sh"]
-post = ["post-generate.sh"]
