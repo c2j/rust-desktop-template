@@ -57,10 +57,6 @@ criterion = "0.5"
 tempfile = "3.8"
 pretty_assertions = "1.4"
 
-[[bench]]
-name = "ui_bench"
-harness = false
-
 [profile.release]
 opt-level = 3
 lto = true
