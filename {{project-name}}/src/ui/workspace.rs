@@ -99,14 +99,9 @@ impl Workspace {
             // Add padding inside the frame
             ui.add_space(theme.spacing.medium);
 
-            // Create a clone of ui for the module to use
-            let mut module_ui = ui.new_child();
-
             // Render the module's content
-            // Note: In a real implementation, we would need to handle the mutable reference issue
-            // For now, we'll show a placeholder
-
-            self.render_module_placeholder(&mut module_ui, module, theme);
+            // Note: new_child() not available in egui 0.28, using current ui
+            self.render_module_placeholder(ui, module, theme);
 
             // Add padding at the bottom
             ui.add_space(theme.spacing.medium);

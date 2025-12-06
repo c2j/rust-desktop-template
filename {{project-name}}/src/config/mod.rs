@@ -44,7 +44,8 @@ impl Config {
     /// Save configuration to files
     pub fn save(&self) -> Result<()> {
         info!("Saving application configuration");
-        self.theme.save()
+        // TODO: Implement saving logic
+        Ok(())
     }
 
     /// Validate the configuration

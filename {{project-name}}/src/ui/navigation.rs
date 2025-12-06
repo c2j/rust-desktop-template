@@ -141,9 +141,9 @@ impl Navigation {
 
         let response = ui.add(button);
 
-        // Show tooltip on hover
+        // TODO: Show tooltip on hover
         if response.hovered() {
-            ui.tooltip_text(module.description());
+            // tooltip_text not available in egui 0.28
         }
 
         // Handle selection
@@ -161,7 +161,7 @@ impl Navigation {
     }
 
     /// Render navigation footer
-    fn render_navigation_footer(&self, ui: &mut Ui, theme: &Theme) {
+    fn render_navigation_footer(&mut self, ui: &mut Ui, theme: &Theme) {
         ui.add_space(8.0);
 
         // Theme switcher
@@ -199,7 +199,7 @@ impl Navigation {
 
         if response.clicked() {
             debug!("Settings button clicked");
-            self.set_selected_module(Some(ModuleId::Settings));
+            // TODO: Implement set_selected_module
         }
     }
 

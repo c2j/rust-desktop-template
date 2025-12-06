@@ -87,7 +87,7 @@ impl ApplicationModule for SystemMonitor {
         // Memory Usage
         ui.horizontal(|ui| {
             ui.label("Memory Usage:");
-            ui.label(self.format_bytes(self.memory_usage));
+            ui.label(Self::format_bytes(self.memory_usage));
         });
 
         // Memory Progress bar (assuming 16GB total)

@@ -31,7 +31,7 @@ impl StatusBar {
             self.render_left_status(ui, state);
 
             // Spacer
-            ui.allocate_ui_with_layout([ui.available_width() - 300.0, ui.available_height()], egui::Layout::default(), |ui| {
+            ui.allocate_ui_with_layout(egui::Vec2::new(ui.available_width() - 300.0, ui.available_height()), egui::Layout::default(), |ui| {
                 // Middle section - Flexible spacer
                 ui.add_space(ui.available_width());
             });

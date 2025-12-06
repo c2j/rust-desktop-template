@@ -38,7 +38,7 @@ impl ModuleRegistry {
 
     /// Get a mutable module by ID
     pub fn get_mut(&mut self, id: ModuleId) -> Option<&mut (dyn ApplicationModule + '_)> {
-        self.modules.get_mut(&id).map(|m| m.as_mut())
+        self.modules.get_mut(&id).map(move |m| m.as_mut())
     }
 
     /// Remove a module by ID
