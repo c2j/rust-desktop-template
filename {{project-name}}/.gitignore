@@ -1,0 +1,77 @@
+# Rust
+/target/
+**/*.rs.bk
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Config files (may contain sensitive data)
+*.toml.local
+*.json.local
+*.yaml.local
+*.yml.local
+
+# Cache
+.cache/
+temp/
+tmp/
+
+# Build artifacts
+*.pdb
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Backup files
+*.bak
+*.backup
+
+# Profiling
+*.prof
+
+# Debug files
+*.dSYM/
+*.dSYM
+
+# Local testing
+test-project/
+*.test/
+
+# Documentation builds
+docs/book/
+docs/target/
+
+# Generated files
+**/generated/
+
+# Rust Analyzer
+.rust-analyzer/
+
+# Cargo lock file (uncomment if you want to ignore it)
+# Cargo.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Asset files that should be generated at runtime
+assets/generated/

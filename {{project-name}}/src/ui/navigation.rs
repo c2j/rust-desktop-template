@@ -289,7 +289,7 @@ mod tests {
     #[test]
     fn test_navigation_creation() {
         let state = std::sync::Arc::new(std::sync::RwLock::new(
-            crate::AppState::new().unwrap()
+            AppState::new().unwrap()
         ));
         let navigation = Navigation::new(state);
         assert!(navigation.selected_module().is_none());
@@ -298,7 +298,7 @@ mod tests {
     #[test]
     fn test_module_selection() {
         let state = std::sync::Arc::new(std::sync::RwLock::new(
-            crate::AppState::new().unwrap()
+            AppState::new().unwrap()
         ));
         let mut navigation = Navigation::new(state);
 

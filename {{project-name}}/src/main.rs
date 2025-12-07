@@ -3,10 +3,14 @@ use eframe::{egui, NativeOptions};
 use tracing::{info, error};
 
 fn main() {
-    // Initialize tracing
-    tracing_subscriber::fmt()
+    // Initialize tracing only if not already set
+    if tracing_subscriber::fmt()
         .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
-        .init();
+        .try_init()
+        .is_err()
+    {
+        // Logger already initialized, which is fine
+    }
 
     info!("Starting test-template v{}", env!("CARGO_PKG_VERSION"));
 

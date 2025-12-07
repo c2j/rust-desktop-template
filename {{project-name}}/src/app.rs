@@ -73,8 +73,7 @@ impl App {
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
         debug!("Creating new application instance");
 
-        // Initialize logging
-        crate::logger::init();
+        // Logging is initialized in main.rs to avoid conflicts
 
         // Create application state
         let state = match AppState::new() {
@@ -187,11 +186,7 @@ fn configure_egui(ctx: &Context) {
     // TODO: Add emoji font support when available
     // fonts.font_data.insert("emoji".to_string(), egui::FontData::default());
     // Note: Emoji font file commented out to avoid missing file error
-
-    // Configure font families
-    fonts.families.get_mut(&egui::FontFamily::Proportional)
-        .unwrap()
-        .insert(0, "emoji".to_string());
+    // Font family configuration removed to prevent emoji font error
 
     ctx.set_fonts(fonts);
 

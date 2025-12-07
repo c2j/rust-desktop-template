@@ -1,0 +1,58 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# The above will handle all files NOT found below
+*.cs text diff=csharp
+*.java text diff=java
+*.html text diff=html
+*.xml text diff=html
+*.py text diff=python
+*.sql text diff=sql
+*.rb text diff=ruby
+*.php text diff=php
+*.h text diff=cpp
+*.c text diff=cpp
+*.js text diff=javascript
+*.css text diff=css
+*.json text diff=json
+*.toml text diff=toml
+*.yaml text diff=yaml
+*.md text diff=markdown
+*.rs text diff=rust
+*.sh text eol=lf
+
+# These files are text and should be normalized (Convert CRLF to LF)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# These files are binary and should be left untouched
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Cargo generated files
+Cargo.lock text eol=lf
+
+# Rust source files
+*.rs text eol=lf
+*.toml text eol=lf
+
+# Documentation files
+*.md text eol=lf
+*.rst text eol=lf
+*.txt text eol=lf
+
+# Configuration files
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.ini text eol=lf
